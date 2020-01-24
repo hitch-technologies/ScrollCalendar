@@ -15,4 +15,10 @@
         scrollcalendar:monthTitleStyle="@style/RedMonthTitleStyle"
         scrollcalendar:selectedItemStyle="@style/RedLayoutSelectedItemStyle" />
 
+    <Button
+        android:id="@+id/gilad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="$$$" />
+
 </RelativeLayout>

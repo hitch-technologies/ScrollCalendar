@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
@@ -34,7 +35,7 @@ public class DialogFrag extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ScrollCalendar calendar = view.findViewById(R.id.calendar);
+        final ScrollCalendar calendar = view.findViewById(R.id.calendar);
         calendar.setMonthScrollListener(new MonthScrollListener() {
             @Override
             public boolean shouldAddNextMonth(int lastDisplayedYear, int lastDisplayedMonth) {
@@ -56,6 +57,15 @@ public class DialogFrag extends DialogFragment {
                 }
             }
         });
+
+        Button gilad = view.findViewById(R.id.gilad);
+        gilad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendar.refresh();
+            }
+        });
+
 //        calendar.setOnDateClickListener(new OnDateClickListener() {
 //            @Override
 //            public void onCalendarDayClicked(int year, int month, int day) {

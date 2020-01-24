@@ -41,7 +41,7 @@ public class ScrollCalendarAdapter extends RecyclerView.Adapter<MonthViewHolder>
     public DayResProvider dayResProvider;
 
     @Nullable
-    private Calendar selected;
+    public Calendar selected;
 
     public ScrollCalendarAdapter(@NonNull MonthResProvider monthResProvider, @NonNull DayResProvider dayResProvider) {
         this.monthResProvider = monthResProvider;

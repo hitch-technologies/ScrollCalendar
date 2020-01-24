@@ -116,6 +116,7 @@ public class ScrollCalendar extends LinearLayoutCompat implements ResProvider {
     @SuppressWarnings("unused")
     public void refresh() {
         refreshLegend();
+        getAdapter().selected = null;
         getAdapter().notifyDataSetChanged();
     }
 
