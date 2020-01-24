@@ -16,8 +16,10 @@ import android.widget.ScrollView;
 import com.rafalmanka.example.R;
 
 import pl.rafman.scrollcalendar.ScrollCalendar;
+import pl.rafman.scrollcalendar.contract.DateWatcher;
 import pl.rafman.scrollcalendar.contract.MonthScrollListener;
 import pl.rafman.scrollcalendar.contract.OnDateClickListener;
+import pl.rafman.scrollcalendar.data.CalendarDay;
 
 public class DialogFrag extends DialogFragment {
 
@@ -42,6 +44,16 @@ public class DialogFrag extends DialogFragment {
             @Override
             public boolean shouldAddPreviousMonth(int firstDisplayedYear, int firstDisplayedMonth) {
                 return false;
+            }
+        });
+        calendar.setDateWatcher(new DateWatcher() {
+            @Override
+            public int getStateForDate(int year, int month, int day) {
+                if (day % 2 == 0) {
+                    return CalendarDay.DISABLED;
+                } else {
+                    return CalendarDay.DEFAULT;
+                }
             }
         });
 //        calendar.setOnDateClickListener(new OnDateClickListener() {

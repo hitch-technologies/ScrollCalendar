@@ -33,7 +33,7 @@ public class ScrollCalendar extends LinearLayoutCompat implements ResProvider {
     @Nullable
     private String customFont;
     @Nullable
-    public ScrollCalendarAdapter adapter;
+    private ScrollCalendarAdapter adapter;
     @StyleRes
     private int monthTitleStyle;
     @StyleRes
@@ -196,7 +196,7 @@ public class ScrollCalendar extends LinearLayoutCompat implements ResProvider {
         return adapter;
     }
 
-    public ScrollCalendarAdapter createAdapter() {
+    private ScrollCalendarAdapter createAdapter() {
         MonthResProviderImpl monthResProvider = new MonthResProviderImpl(getContext(), this);
         DayResProviderImpl dayResProvider = new DayResProviderImpl(getContext(), this);
         switch (defaultAdapter) {
