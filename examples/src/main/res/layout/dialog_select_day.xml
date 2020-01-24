@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:scrollcalendar="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <pl.rafman.scrollcalendar.ScrollCalendar
+        android:id="@+id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:layout_marginTop="8dp"
+        scrollcalendar:adapter="date"
+        scrollcalendar:legendSeparatorStyle="@style/LegendItemStyle"
+        scrollcalendar:monthTitleStyle="@style/RedMonthTitleStyle"
+        scrollcalendar:selectedItemStyle="@style/RedLayoutSelectedItemStyle" />
+
+</RelativeLayout>

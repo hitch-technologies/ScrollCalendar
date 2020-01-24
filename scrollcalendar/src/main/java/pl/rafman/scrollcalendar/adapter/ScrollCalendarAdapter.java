@@ -38,7 +38,7 @@ public class ScrollCalendarAdapter extends RecyclerView.Adapter<MonthViewHolder>
     @Nullable
     private DateWatcher dateWatcher;
     private MonthResProvider monthResProvider;
-    private DayResProvider dayResProvider;
+    public DayResProvider dayResProvider;
 
     @Nullable
     private Calendar selected;
@@ -130,6 +130,9 @@ public class ScrollCalendarAdapter extends RecyclerView.Adapter<MonthViewHolder>
 
     @State
     protected int getStateForDate(int year, int month, int day) {
+        if (isSelected(selected, year, month, day)) {
+            return CalendarDay.SELECTED;
+        }
         if (dateWatcher == null) {
             return CalendarDay.DEFAULT;
         }
@@ -142,6 +145,29 @@ public class ScrollCalendarAdapter extends RecyclerView.Adapter<MonthViewHolder>
             months.add(0, getFirstItem().previous());
             notifyItemInserted(0);
         }
+    }
+
+    private boolean isSelected(Calendar selected, int year, int month, int day) {
+        if (selected == null) {
+            return false;
+        }
+        //noinspection UnnecessaryLocalVariable
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, selected.get(Calendar.YEAR));
+        calendar.set(Calendar.MONTH, selected.get(Calendar.MONTH));
+        calendar.set(Calendar.DAY_OF_MONTH, selected.get(Calendar.DAY_OF_MONTH));
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        long millis = calendar.getTimeInMillis();
+
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        long millis2 = calendar.getTimeInMillis();
+
+        return millis == millis2;
     }
 
     private void appendCalendarMonth() {
