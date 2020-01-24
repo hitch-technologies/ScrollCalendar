@@ -240,9 +240,7 @@ public class ScrollCalendarAdapter extends RecyclerView.Adapter<MonthViewHolder>
             return;
         }
 
-        if (selected != null && selected.equals(calendar)) {
-            selected = null;
-        } else {
+        if (getStateForDate(year, month, day) == CalendarDay.DEFAULT) {
             selected = calendar;
         }
 
