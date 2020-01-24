@@ -16,7 +16,9 @@ import java.util.Locale;
 import pl.rafman.scrollcalendar.ScrollCalendar;
 import pl.rafman.scrollcalendar.adapter.ScrollCalendarAdapter;
 import pl.rafman.scrollcalendar.adapter.example.DefaultDateScrollCalendarAdapter;
+import pl.rafman.scrollcalendar.contract.DateWatcher;
 import pl.rafman.scrollcalendar.contract.OnDateClickListener;
+import pl.rafman.scrollcalendar.data.CalendarDay;
 
 
 public class DefaultAdapterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -37,6 +39,17 @@ public class DefaultAdapterActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
         ScrollCalendarAdapter adapter = scrollCalendar.getAdapter();
+        adapter.setDateWatcher(new DateWatcher() {
+            @Override
+            public int getStateForDate(int year, int month, int day) {
+                if (day % 2 == 0) {
+                    return CalendarDay.DEFAULT;
+                } else {
+                    return CalendarDay.DISABLED;
+                }
+//                return 0;
+            }
+        });
         if (adapter instanceof DefaultDateScrollCalendarAdapter) {
             DefaultDateScrollCalendarAdapter defaultAdapter = (DefaultDateScrollCalendarAdapter) adapter;
             Date date = defaultAdapter.getSelectedDate();

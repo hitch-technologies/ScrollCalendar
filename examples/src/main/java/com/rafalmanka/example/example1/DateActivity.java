@@ -78,16 +78,19 @@ public class DateActivity extends AppCompatActivity {
 
     @State
     private int doGetStateForDate(int year, int month, int day) {
-        if (isSelected(selected, year, month, day)) {
-            return CalendarDay.SELECTED;
-        }
-        if (isToday(year, month, day)) {
-            return CalendarDay.TODAY;
-        }
-        if (isUnavailable(year, month, day)) {
-            return CalendarDay.UNAVAILABLE;
-        }
-        if (isInThePast(year, month, day) || isWeekend(year, month, day)) {
+//        if (isSelected(selected, year, month, day)) {
+//            return CalendarDay.SELECTED;
+//        }
+//        if (isToday(year, month, day)) {
+//            return CalendarDay.TODAY;
+//        }
+//        if (isUnavailable(year, month, day)) {
+//            return CalendarDay.UNAVAILABLE;
+//        }
+//        if (isInThePast(year, month, day) || isWeekend(year, month, day)) {
+//            return CalendarDay.DISABLED;
+//        }
+        if (day % 2 == 0) {
             return CalendarDay.DISABLED;
         }
         return CalendarDay.DEFAULT;

@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import pl.rafman.scrollcalendar.contract.ClickCallback;
@@ -37,6 +39,9 @@ public class ScrollCalendarAdapter extends RecyclerView.Adapter<MonthViewHolder>
     private DateWatcher dateWatcher;
     private MonthResProvider monthResProvider;
     private DayResProvider dayResProvider;
+
+    @Nullable
+    private Calendar selected;
 
     public ScrollCalendarAdapter(@NonNull MonthResProvider monthResProvider, @NonNull DayResProvider dayResProvider) {
         this.monthResProvider = monthResProvider;
@@ -190,10 +195,51 @@ public class ScrollCalendarAdapter extends RecyclerView.Adapter<MonthViewHolder>
         notifyDataSetChanged();
     }
 
+    @Nullable
+    public Date getSelectedDate() {
+        return selected != null ? selected.getTime() : null;
+    }
+
     protected void onCalendarDayClicked(int year, int month, int day) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        if (isInThePast(year, month, day)) {
+            return;
+        }
+
+        if (selected != null && selected.equals(calendar)) {
+            selected = null;
+        } else {
+            selected = calendar;
+        }
+
         if (onDateClickListener != null) {
             onDateClickListener.onCalendarDayClicked(year, month, day);
         }
+    }
+
+    private boolean isInThePast(int year, int month, int day) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 1);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        long now = calendar.getTimeInMillis();
+
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+
+        long then = calendar.getTimeInMillis();
+        return now > then;
     }
 
 }
