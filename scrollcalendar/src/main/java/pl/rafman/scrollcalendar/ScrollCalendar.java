@@ -63,19 +63,27 @@ public class ScrollCalendar extends LinearLayoutCompat implements ResProvider {
 
     private final LegendItem[] legend = new LegendItem[7];
 
+    public Context mContext;
+    public AttributeSet mAttrs;
+
     public ScrollCalendar(Context context) {
         super(context);
+        this.mContext = context;
         init(context);
     }
 
     public ScrollCalendar(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.mContext = context;
+        this.mAttrs = attrs;
         initStyle(context, attrs);
         init(context);
     }
 
     public ScrollCalendar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.mContext = context;
+        this.mAttrs = attrs;
         initStyle(context, attrs);
         init(context);
     }
@@ -88,7 +96,7 @@ public class ScrollCalendar extends LinearLayoutCompat implements ResProvider {
         }
     }
 
-    private void initStyle(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public void initStyle(@NonNull Context context, @Nullable AttributeSet attrs) {
         TypedArray typedArray = context
                 .obtainStyledAttributes(attrs, R.styleable.ScrollCalendar, R.attr.scrollCalendarStyleAttr, R.style.ScrollCalendarStyle);
         selectedItemStyle = typedArray.getResourceId(R.styleable.ScrollCalendar_selectedItemStyle, 0);
@@ -185,6 +193,8 @@ public class ScrollCalendar extends LinearLayoutCompat implements ResProvider {
             legendItem.display();
         }
     }
+
+
 
     @NonNull
     public ScrollCalendarAdapter getAdapter() {

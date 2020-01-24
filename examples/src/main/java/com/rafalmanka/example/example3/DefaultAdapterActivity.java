@@ -60,6 +60,8 @@ public class DefaultAdapterActivity extends AppCompatActivity implements View.On
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                 text = format.format(date);
             }
+
+            scrollCalendar.initStyle(scrollCalendar.mContext, scrollCalendar.mAttrs);
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
         }
     }
