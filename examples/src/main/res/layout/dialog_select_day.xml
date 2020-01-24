@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="700dp"
         android:layout_marginTop="8dp"
-        scrollcalendar:adapter="date"
+        scrollcalendar:adapter="none"
         scrollcalendar:legendSeparatorStyle="@style/LegendItemStyle"
         scrollcalendar:monthTitleStyle="@style/RedMonthTitleStyle"
         scrollcalendar:selectedItemStyle="@style/RedLayoutSelectedItemStyle" />
