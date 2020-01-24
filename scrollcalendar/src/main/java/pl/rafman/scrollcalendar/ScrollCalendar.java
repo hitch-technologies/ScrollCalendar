@@ -13,6 +13,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+
 import pl.rafman.scrollcalendar.adapter.ResProvider;
 import pl.rafman.scrollcalendar.adapter.ScrollCalendarAdapter;
 import pl.rafman.scrollcalendar.adapter.example.DefaultDateScrollCalendarAdapter;
@@ -78,6 +81,13 @@ public class ScrollCalendar extends LinearLayoutCompat implements ResProvider {
         super(context, attrs, defStyleAttr);
         initStyle(context, attrs);
         init(context);
+    }
+
+    public Calendar getSelectedDay() {
+        if (adapter != null) {
+            return adapter.selected;
+        }
+        return null;
     }
 
     private void init(@NonNull Context context) {
