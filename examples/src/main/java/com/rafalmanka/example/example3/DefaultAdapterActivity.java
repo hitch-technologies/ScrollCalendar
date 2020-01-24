@@ -61,7 +61,7 @@ public class DefaultAdapterActivity extends AppCompatActivity implements View.On
                 text = format.format(date);
             }
 
-            scrollCalendar.initStyle(scrollCalendar.mContext, scrollCalendar.mAttrs);
+//            scrollCalendar.
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
         }
     }
