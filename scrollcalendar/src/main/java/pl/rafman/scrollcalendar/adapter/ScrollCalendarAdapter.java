@@ -236,7 +236,7 @@ public class ScrollCalendarAdapter extends RecyclerView.Adapter<MonthViewHolder>
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
 
-        if (isInThePast(year, month, day)) {
+        if (isInThePast(year, month, day) || getStateForDate(year, month, day) == CalendarDay.DISABLED) {
             return;
         }
 
