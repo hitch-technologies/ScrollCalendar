@@ -226,7 +226,6 @@ public class ScrollCalendarAdapter extends RecyclerView.Adapter<MonthViewHolder>
         return selected != null ? selected.getTime() : null;
     }
 
-    @Nullable
     public void setSelectedDate(Calendar newSelected) {
         selected = newSelected;
     }

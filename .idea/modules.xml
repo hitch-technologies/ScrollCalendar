@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ScrollCalendar.iml" filepath="$PROJECT_DIR$/ScrollCalendar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/examples/examples.iml" filepath="$PROJECT_DIR$/examples/examples.iml" />
-      <module fileurl="file://$PROJECT_DIR$/scrollcalendar/scrollcalendar.iml" filepath="$PROJECT_DIR$/scrollcalendar/scrollcalendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScrollCalendar.iml" filepath="$PROJECT_DIR$/ScrollCalendar.iml" group="ScrollCalendar" />
+      <module fileurl="file://$PROJECT_DIR$/examples/examples.iml" filepath="$PROJECT_DIR$/examples/examples.iml" group="ScrollCalendar/examples" />
+      <module fileurl="file://$PROJECT_DIR$/scrollcalendar/scrollcalendar.iml" filepath="$PROJECT_DIR$/scrollcalendar/scrollcalendar.iml" group="ScrollCalendar/scrollcalendar" />
     </modules>
   </component>
 </project>
